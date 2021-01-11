@@ -159,37 +159,4 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void applications(){
-        PackageManager pm = getPackageManager();
-        Intent main = new Intent(Intent.ACTION_MAIN, null);
-        main.addCategory(Intent.CATEGORY_LAUNCHER);
-        List<ResolveInfo> packages = pm.queryIntentActivities(main, 0);
-
-        ArrayList<String> app_name_list = new ArrayList<String>();
-        ArrayList<String> app_package_list = new ArrayList<String>();
-
-        for(ResolveInfo resolve_info : packages) {
-            try {
-                package_name = resolve_info.activityInfo.packageName;
-                app_name = (String)pm.getApplicationLabel(
-                        pm.getApplicationInfo(package_name
-                                , PackageManager.GET_META_DATA));
-                boolean same = false;
-                for(int i = 0 ; i < app_name_list.size() ; i++) {
-                    if(package_name.equals(app_package_list.get(i)))
-                        same = true;
-                }
-                if(!same) {
-                    app_name_list.add(app_name);
-                    app_package_list.add(package_name);
-                }
-                app_name = app_name.toLowerCase();
-                package_name = package_name.toLowerCase();
-                applicationArray.put(app_name,package_name);
-                Log.i("Check", "package = <" + package_name + "> name = <" + app_name + ">");
-//                Log.d("APPLICATION_ARRAY", String.valueOf(applicationArray));
-            } catch(Exception e) { }
-        }
-    }
-
 }
