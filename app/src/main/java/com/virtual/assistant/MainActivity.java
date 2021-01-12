@@ -49,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
             checkPermission();
         }
 
-        //getting all applications
-        applications();
         //declaring variable
         editText = findViewById(R.id.text);
         micButton = findViewById(R.id.button);
